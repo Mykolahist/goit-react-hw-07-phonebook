@@ -1,0 +1,47 @@
+.form__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: inline-flex;
+  flex-direction: column;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
+}
+
+.label:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.input {
+  margin-top: 10px;
+  padding: 5px;
+
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 5px 15px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: capitalize;
+
+  border: none;
+  border-radius: 4px;
+  background-color: yellowgreen;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(103, 175, 20);
+  transform: scale(1.03);
+}
+
+.button:active {
+  color: yellowgreen;
+  border: 1px solid accent-color;
+}
