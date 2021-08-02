@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import shortid from 'shortid';
 
 import Notification from '../Notification';
-import actions from '../../redux/phonebook-actions';
+import { operations, selectors } from '../../redux/phonebook';
 
 import styles from './Form.module.css';
 import fadeStyles from '../Notification/fadeNotification.module.css';
@@ -112,11 +112,11 @@ class Form extends Component {
 }
 
 const mapStateToProps = state => ({
-  savedContacts: state.phonebook.contacts,
+  savedContacts: selectors.getContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: data => dispatch(actions.addContact(data)),
+  onSubmit: data => dispatch(operations.addContact(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

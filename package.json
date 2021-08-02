@@ -2,14 +2,18 @@
   "name": "goit-react-hw-07-phonebook",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Mykolahist.github.io/goit-react-hw-07-phonebook",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "prop-types": "^15.7.2",
+    "axios": "^0.21.1",
+    "gh-pages": "^3.2.3",
+    "json-server": "^0.16.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-loader-spinner": "^4.0.0",
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
@@ -23,7 +27,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "api-server": "json-server --port 1362 --delay 300 --watch db.json",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

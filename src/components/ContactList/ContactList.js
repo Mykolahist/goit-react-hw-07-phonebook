@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import actions from '../../redux/phonebook-actions';
+import { operations, selectors } from '../../redux/phonebook';
 import styles from './ContactList.module.css';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
@@ -42,25 +42,12 @@ ContactList.propTypes = {
   ).isRequired,
 };
 
-const getFilteredContacts = (allContacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-
-  return allContacts.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter),
-  );
-};
-
-const mapStateToProps = state => {
-  const { contacts, filter } = state.phonebook;
-  const filteredContacts = getFilteredContacts(contacts, filter);
-
-  return {
-    contacts: filteredContacts,
-  };
-};
+const mapStateToProps = state => ({
+  contacts: selectors.getFilteredContacts(state),
+});
 
 const mapDispatchToProps = dispatch => ({
-  onDeleteContact: id => dispatch(actions.deleteContact(id)),
+  onDeleteContact: id => dispatch(operations.deleteContact(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
